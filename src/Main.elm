@@ -16,7 +16,7 @@ type Msg
     | SquareRoot
 
 
-update : Msg -> Int -> Int
+update : Msg -> Float -> Float
 update msg model =
     case msg of
         Increment ->
@@ -32,7 +32,7 @@ update msg model =
             sqrt model
 
 
-view : Int -> Html Msg
+view : Float -> Html Msg
 view model =
     div []
         [ button [ onClick SquareRoot ] [ text "sqrt" ]

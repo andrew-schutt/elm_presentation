@@ -15,6 +15,7 @@ type Msg
     | Double
 
 
+update : Msg -> Int -> Int
 update msg model =
     case msg of
         Increment ->
@@ -27,6 +28,7 @@ update msg model =
             model * 2
 
 
+view : Int -> Html Msg
 view model =
     div []
         [ button [ onClick Decrement ] [ text "-" ]

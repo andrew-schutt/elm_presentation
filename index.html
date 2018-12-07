@@ -4402,6 +4402,7 @@ var elm$core$Array$toList = function (array) {
 };
 var elm$core$Basics$add = _Basics_add;
 var elm$core$Basics$mul = _Basics_mul;
+var elm$core$Basics$sqrt = _Basics_sqrt;
 var elm$core$Basics$sub = _Basics_sub;
 var author$project$Main$update = F2(
 	function (msg, model) {
@@ -4410,18 +4411,21 @@ var author$project$Main$update = F2(
 				return model + 1;
 			case 'Decrement':
 				return model - 1;
-			default:
+			case 'Double':
 				return model * 2;
+			default:
+				return elm$core$Basics$sqrt(model);
 		}
 	});
 var author$project$Main$Decrement = {$: 'Decrement'};
 var author$project$Main$Double = {$: 'Double'};
 var author$project$Main$Increment = {$: 'Increment'};
+var author$project$Main$SquareRoot = {$: 'SquareRoot'};
 var elm$core$Maybe$Just = function (a) {
 	return {$: 'Just', a: a};
 };
 var elm$core$Maybe$Nothing = {$: 'Nothing'};
-var elm$core$String$fromInt = _String_fromNumber;
+var elm$core$String$fromFloat = _String_fromNumber;
 var elm$core$Basics$identity = function (x) {
 	return x;
 };
@@ -4689,6 +4693,7 @@ var elm$core$List$indexedMap = F2(
 			xs);
 	});
 var elm$core$String$all = _String_all;
+var elm$core$String$fromInt = _String_fromNumber;
 var elm$core$String$join = F2(
 	function (sep, chunks) {
 		return A2(
@@ -4858,6 +4863,16 @@ var author$project$Main$view = function (model) {
 				elm$html$Html$button,
 				_List_fromArray(
 					[
+						elm$html$Html$Events$onClick(author$project$Main$SquareRoot)
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('sqrt')
+					])),
+				A2(
+				elm$html$Html$button,
+				_List_fromArray(
+					[
 						elm$html$Html$Events$onClick(author$project$Main$Decrement)
 					]),
 				_List_fromArray(
@@ -4870,7 +4885,7 @@ var author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						elm$html$Html$text(
-						elm$core$String$fromInt(model))
+						elm$core$String$fromFloat(model))
 					])),
 				A2(
 				elm$html$Html$button,

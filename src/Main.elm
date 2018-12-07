@@ -37,7 +37,7 @@ view model =
     div []
         [ button [ onClick SquareRoot ] [ text "sqrt" ]
         , button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromInt model) ]
+        , div [] [ text (String.fromFloat model) ]
         , button [ onClick Increment ] [ text "+" ]
         , button [ onClick Double ] [ text "*2" ]
         ]

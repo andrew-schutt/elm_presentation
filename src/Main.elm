@@ -12,6 +12,7 @@ main =
 type Msg
     = Increment
     | Decrement
+    | Double
 
 
 update msg model =
@@ -22,10 +23,14 @@ update msg model =
         Decrement ->
             model - 1
 
+        Double ->
+            model * 2
+
 
 view model =
     div []
         [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromFloat model) ]
+        , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , button [ onClick Double ] [ text "*2" ]
         ]

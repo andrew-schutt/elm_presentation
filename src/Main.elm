@@ -13,6 +13,7 @@ type Msg
     = Increment
     | Decrement
     | Double
+    | SquareRoot
 
 
 update : Msg -> Int -> Int
@@ -27,11 +28,15 @@ update msg model =
         Double ->
             model * 2
 
+        SquareRoot ->
+            sqrt model
+
 
 view : Int -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
+        [ button [ onClick SquareRoot ] [ text "sqrt" ]
+        , button [ onClick Decrement ] [ text "-" ]
         , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
         , button [ onClick Double ] [ text "*2" ]
